@@ -10,4 +10,6 @@ RUN mkdir -p /var/lib/systemd/linger && \
     touch /var/lib/systemd/linger/podman && \
     chown -R 1000:1000 /home/podman
 
+RUN sed -i.bak '/netns="host"/d' /etc/containers/containers.conf
+
 ENTRYPOINT /sbin/init
